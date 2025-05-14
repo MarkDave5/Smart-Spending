@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - Smart Spending</title>
+  <link rel="stylesheet" href="register.css" />
+  <style>
+    .password-wrapper {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .password-wrapper input {
+      width: 100%;
+      padding-right: 60px; /* space for toggle */
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 14px;
+      color: #0066ff;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="image-side">
+      <img src="Apps.jpg" alt="Register Illustration" />
+      <h1>Smart Spending</h1>
+      <p>Take control of your finances. Sign up now and manage your budget smarter!</p>
+    </div>
+
+    <div class="form-side">
+      <div class="login-card">
+        <h2>Create an Account</h2>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+
+        <input type="email" id="registerEmail" placeholder="Email" />
+
+        <div class="password-wrapper">
+          <input type="password" id="registerPassword" placeholder="Password" />
+          <span class="toggle-password" data-target="registerPassword">Show</span>
+        </div>
+
+        <div class="password-wrapper">
+          <input type="password" id="confirmPassword" placeholder="Confirm Password" />
+          <span class="toggle-password" data-target="confirmPassword">Show</span>
+        </div>
+
+        <button id="registerBtn" class="btn-login">Register</button>
+        <button id="googleLoginBtn" class="btn-google">
+          <img src="google.png" alt="Google logo">
+          Login with Google
+        </button>
+
+        <p id="register-error" class="error-text"></p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="register.js" defer></script>
+  <script>
+    document.querySelectorAll('.toggle-password').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const targetId = toggle.getAttribute('data-target');
+        const input = document.getElementById(targetId);
+        if (input.type === "password") {
+          input.type = "text";
+          toggle.textContent = "Hide";
+        } else {
+          input.type = "password";
+          toggle.textContent = "Show";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
